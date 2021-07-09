@@ -1,0 +1,12 @@
+{
+	"include": ["src"],
+	"compilerOptions": {
+		"outDir": "lib",
+		"strict": true,
+		"module": "ES2020",
+		"target": "ESNext",
+		"declaration": true,
+		"moduleResolution": "node",
+		"esModuleInterop": true
+	}
+}

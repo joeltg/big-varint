@@ -17,6 +17,7 @@ This library is TypeScript-native, ESModule-only, and has zero dependencies. It 
   - [Decode an Unsigned Varint](#decode-an-unsigned-varint)
   - [Get the Encoding Length of an Unsigned Varint](#get-the-encoding-length-of-an-unsigned-varint)
 - [Testing](#testing)
+- [Credits](#credits)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -135,6 +136,10 @@ Tests use [AVA 4](https://github.com/avajs/ava) (currently in alpha) and live in
 ```
 npm run test
 ```
+
+## Credits
+
+The encoding/decoding functions were adapted more or less verbatim from the [chrisdickinson/varint](https://github.com/chrisdickinson/varint) repo, and only modified to operate over BigInts.
 
 ## Contributing
 

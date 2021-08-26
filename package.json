@@ -1,7 +1,7 @@
 {
 	"name": "big-varint",
 	"version": "0.1.0",
-	"description": "Encode and decode signed and unsigned BigInts",
+	"description": "Encode and decode arbitrarily large signed and unsigned BigInts",
 	"type": "module",
 	"main": "lib/index.js",
 	"types": "lib/index.d.ts",

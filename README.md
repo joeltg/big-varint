@@ -2,7 +2,9 @@
 
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
-Encode and decode arbitrarily large signed and unsigned BigInts
+Encode and decode arbitrarily large signed and unsigned BigInts.
+
+This library is TypeScript-native, ESModule-only, and has zero dependencies. It uses Uint8Arrays and works in node and the browser.
 
 ## Table of Contents
 
@@ -33,7 +35,7 @@ import { signed } from "big-varint"
 
 const i = -300n
 
-const data = signed.encode(i) // Uint8Array(2) [ 215, 4 ]
+signed.encode(i) // Uint8Array(2) [ 215, 4 ]
 ```
 
 ### Decode a Signed Varint
@@ -43,7 +45,17 @@ import { signed } from "big-varint"
 
 const data = new Uint8Array([215, 4])
 
-const i = signed.decode(data) // -300n
+signed.decode(data) // -300n
+```
+
+`decode` can also be passed an optional `offset` parameter:
+
+```typescript
+import { signed } from "big-varint"
+
+const data = new Uint8Array([0, 0, 215, 4, 37, 37, 37])
+
+signed.decode(data, 2) // -300n
 ```
 
 ### Get the Encoding Length of a Signed Varint
@@ -53,7 +65,7 @@ import { signed } from "big-varint"
 
 const i = -300n
 
-const length = signed.encodingLength(i) // 2
+signed.encodingLength(i) // 2
 ```
 
 ### Encode an Unsigned Varint
@@ -63,7 +75,7 @@ import { unsigned } from "big-varint"
 
 const i = 123456789012345678901234567890n
 
-const data = unsigned.encode(i)
+unsigned.encode(i)
 
 /*
 Uint8Array(14) [
@@ -90,6 +102,22 @@ const data = new Uint8Array([
 unsigned.decode(data) // 123456789012345678901234567890n
 ```
 
+`decode` can also be passed an optional `offset` parameter:
+
+```typescript
+import { unsigned } from "big-varint"
+
+const data = new Uint8Array([
+    0,   0,   0,   0,
+  210, 149, 252, 241,
+  228, 157, 248, 185,
+  195, 237, 191, 200,
+  238,  49,  37,  37,
+])
+
+unsigned.decode(data, 4) // 123456789012345678901234567890n
+```
+
 ### Get the Encoding Length of an Unsigned Varint
 
 ```typescript
@@ -97,7 +125,7 @@ import { unsigned } from "big-varint"
 
 const i = 123456789012345678901234567890n
 
-const length = unsigned.encodingLength(i) // 14
+unsigned.encodingLength(i) // 14
 ```
 
 ## Testing

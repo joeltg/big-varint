@@ -139,7 +139,7 @@ npm run test
 
 ## Credits
 
-The encoding/decoding functions were adapted more or less verbatim from the [chrisdickinson/varint](https://github.com/chrisdickinson/varint) repo, and only modified to operate over BigInts.
+The encoding/decoding functions were adapted more or less verbatim from [chrisdickinson/varint](https://github.com/chrisdickinson/varint), and only modified to operate over BigInts.
 
 ## Contributing
 

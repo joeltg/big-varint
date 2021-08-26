@@ -2,12 +2,18 @@
 
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
-Encode and decode signed and unsigned BigInts
+Encode and decode arbitrarily large signed and unsigned BigInts
 
 ## Table of Contents
 
 - [Install](#install)
 - [Usage](#usage)
+  - [Encode a Signed Varint](#encode-a-signed-varint)
+  - [Decode a Signed Varint](#decode-a-signed-varint)
+  - [Get the Encoding Length of a Signed Varint](#get-the-encoding-length-of-a-signed-varint)
+  - [Encode an Unsigned Varint](#encode-an-unsigned-varint)
+  - [Decode an Unsigned Varint](#decode-an-unsigned-varint)
+  - [Get the Encoding Length of an Unsigned Varint](#get-the-encoding-length-of-an-unsigned-varint)
 - [Testing](#testing)
 - [Contributing](#contributing)
 - [License](#license)

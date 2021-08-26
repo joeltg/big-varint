@@ -40,6 +40,16 @@ const data = new Uint8Array([215, 4])
 const i = signed.decode(data) // -300n
 ```
 
+### Get the Encoding Length of a Signed Varint
+
+```typescript
+import { signed } from "big-varint"
+
+const i = -300n
+
+const length = signed.encodingLength(i) // 2
+```
+
 ### Encode an Unsigned Varint
 
 ```typescript
@@ -74,6 +84,16 @@ const data = new Uint8Array([
 unsigned.decode(data) // 123456789012345678901234567890n
 ```
 
+### Get the Encoding Length of an Unsigned Varint
+
+```typescript
+import { unsigned } from "big-varint"
+
+const i = 123456789012345678901234567890n
+
+const length = unsigned.encodingLength(i) // 14
+```
+
 ## Testing
 
 Tests use [AVA 4](https://github.com/avajs/ava) (currently in alpha) and live in the [test](./test/) directory.
@@ -84,7 +104,7 @@ npm run test
 
 ## Contributing
 
-PRs accepted!
+I don't expect to add any additional functionality to this library, but am potentially open to proposals for better interfaces. Open issues to discuss any questions before making an PRs.
 
 ## License
 

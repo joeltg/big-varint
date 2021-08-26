@@ -4,7 +4,7 @@
 
 Encode and decode arbitrarily large signed and unsigned BigInts.
 
-This library is TypeScript-native, ESModule-only, and has zero dependencies. It uses Uint8Arrays and works in node and the browser.
+This library is TypeScript-native, ESModule-only, and has zero dependencies. It uses Uint8Arrays and works in node and the browser. It uses the same binary encoding as Go's [encoding/binary](https://pkg.go.dev/encoding/binary) module, the [Protobuf spec](https://developers.google.com/protocol-buffers/docs/encoding), and the [varint](https://www.npmjs.com/package/varint) / [signed-varint](https://www.npmjs.com/package/signed-varint) NPM packages.
 
 ## Table of Contents
 

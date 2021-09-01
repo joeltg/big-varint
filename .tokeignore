@@ -1,6 +1,6 @@
 test/
-.gitignore
 README.md
+CHANGELOG.md
 LICENSE
 ava.config.js
 package.json

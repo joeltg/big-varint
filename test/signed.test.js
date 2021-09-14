@@ -1,6 +1,6 @@
 import test from "ava"
 
-import { signed } from "../src/index.js"
+import { signed } from "../lib/index.js"
 
 const int8 = 0n
 const int8min = -128n

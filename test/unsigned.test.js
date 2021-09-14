@@ -1,6 +1,6 @@
 import test from "ava"
 
-import { unsigned } from "../src/index.js"
+import { unsigned } from "../lib/index.js"
 
 const uint8 = 0n
 const uint8max = 255n

@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## [Unreleased]
 
+### Changed
+
+- Switched tests from TypeScript to JavaScript
+
 ## [0.1.2] - 2021-09-01
 
 ### Added

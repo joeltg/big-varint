@@ -4,18 +4,12 @@
 
 Encode and decode arbitrarily large signed and unsigned BigInts.
 
-This library is TypeScript-native, ESModule-only, and has zero dependencies. It uses Uint8Arrays and works in node and the browser. It uses the same binary encoding as Go's [encoding/binary](https://pkg.go.dev/encoding/binary) module, the [Protobuf spec](https://developers.google.com/protocol-buffers/docs/encoding), and the [varint](https://www.npmjs.com/package/varint) / [signed-varint](https://www.npmjs.com/package/signed-varint) NPM packages.
+This library is TypeScript-native, ESM-only, and has zero dependencies. It uses Uint8Arrays and works in node and the browser. It uses the same binary encoding as Go's [encoding/binary](https://pkg.go.dev/encoding/binary) module, the [Protobuf spec](https://developers.google.com/protocol-buffers/docs/encoding), and the [varint](https://www.npmjs.com/package/varint) / [signed-varint](https://www.npmjs.com/package/signed-varint) NPM packages.
 
 ## Table of Contents
 
 - [Install](#install)
 - [Usage](#usage)
-  - [Encode a Signed Varint](#encode-a-signed-varint)
-  - [Decode a Signed Varint](#decode-a-signed-varint)
-  - [Get the Encoding Length of a Signed Varint](#get-the-encoding-length-of-a-signed-varint)
-  - [Encode an Unsigned Varint](#encode-an-unsigned-varint)
-  - [Decode an Unsigned Varint](#decode-an-unsigned-varint)
-  - [Get the Encoding Length of an Unsigned Varint](#get-the-encoding-length-of-an-unsigned-varint)
 - [Testing](#testing)
 - [Credits](#credits)
 - [Contributing](#contributing)
@@ -94,10 +88,7 @@ Uint8Array(14) [
 import { unsigned } from "big-varint"
 
 const data = new Uint8Array([
-  210, 149, 252, 241,
-  228, 157, 248, 185,
-  195, 237, 191, 200,
-  238,  49
+	210, 149, 252, 241, 228, 157, 248, 185, 195, 237, 191, 200, 238, 49,
 ])
 
 unsigned.decode(data) // 123456789012345678901234567890n
@@ -109,11 +100,8 @@ unsigned.decode(data) // 123456789012345678901234567890n
 import { unsigned } from "big-varint"
 
 const data = new Uint8Array([
-    0,   0,   0,   0,
-  210, 149, 252, 241,
-  228, 157, 248, 185,
-  195, 237, 191, 200,
-  238,  49,  37,  37,
+	0, 0, 0, 0, 210, 149, 252, 241, 228, 157, 248, 185, 195, 237, 191, 200, 238,
+	49, 37, 37,
 ])
 
 unsigned.decode(data, 4) // 123456789012345678901234567890n
@@ -139,7 +127,7 @@ npm run test
 
 ## Credits
 
-The encoding/decoding functions were adapted more or less verbatim from [chrisdickinson/varint](https://github.com/chrisdickinson/varint), and only modified to operate over BigInts.
+A previous version of this library was adapted from [chrisdickinson/varint](https://github.com/chrisdickinson/varint), but has since been rewritten from scratch.
 
 ## Contributing
 

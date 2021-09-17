@@ -4,7 +4,7 @@
 
 Encode and decode arbitrarily large signed and unsigned BigInts.
 
-This library is TypeScript-native, ESM-only, and has zero dependencies. It uses Uint8Arrays and works in node and the browser. It uses the same binary encoding as Go's [encoding/binary](https://pkg.go.dev/encoding/binary) module, the [Protobuf spec](https://developers.google.com/protocol-buffers/docs/encoding), and the [varint](https://www.npmjs.com/package/varint) / [signed-varint](https://www.npmjs.com/package/signed-varint) NPM packages.
+This library is TypeScript-native, ESM-only, and has zero dependencies. It uses Uint8Arrays and works in the browser, Node, and [Deno](https://deno.land/). It uses the same binary encoding as Go's [encoding/binary](https://pkg.go.dev/encoding/binary) module, the [Protobuf spec](https://developers.google.com/protocol-buffers/docs/encoding), and the [varint](https://www.npmjs.com/package/varint) / [signed-varint](https://www.npmjs.com/package/signed-varint) NPM packages.
 
 ## Table of Contents
 
@@ -19,6 +19,14 @@ This library is TypeScript-native, ESM-only, and has zero dependencies. It uses 
 
 ```
 npm i big-varint
+```
+
+Or in Deno:
+
+```typescript
+import { signed, unsigned } from "https://cdn.skypack.dev/big-varint"
+
+signed.encode(-2138912031n)
 ```
 
 ## Usage

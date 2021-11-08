@@ -28,7 +28,7 @@
 	},
 	"homepage": "https://github.com/joeltg/big-varint#readme",
 	"devDependencies": {
-		"ava": "^4.0.0-alpha.2",
+		"ava": "^4.0.0-rc.1",
 		"typescript": "^4.3.4"
 	}
 }

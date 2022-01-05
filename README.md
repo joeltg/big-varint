@@ -127,7 +127,7 @@ unsigned.encodingLength(i) // 14
 
 ## Testing
 
-Tests use [AVA 4](https://github.com/avajs/ava) (currently in alpha) and live in the [test](./test/) directory.
+Tests use [AVA](https://github.com/avajs/ava) and live in the [test](./test/) directory.
 
 ```
 npm run test

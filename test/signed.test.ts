@@ -54,3 +54,9 @@ test("int64 max", (t) => t.is(Buffer.from(signed.encode(int64max)).toString("hex
 
 test("int128 length", (t) => t.is(signed.encodingLength(int128), 10))
 test("int128", (t) => t.is(Buffer.from(signed.encode(int128)).toString("hex"), "80808080808080808002"))
+
+test("signed.decode.bytes", (t) => {
+	const data = new Uint8Array([0, 0, 215, 4, 37, 37, 37, 0, 0])
+	t.is(signed.decode(data, 2), -300n)
+	t.is(signed.decode.bytes, 2)
+})

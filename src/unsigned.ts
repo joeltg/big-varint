@@ -10,22 +10,19 @@ export function encodingLength(value: bigint): number {
 	return i + 1
 }
 
-export function encode(
-	i: bigint,
-	buffer?: ArrayBuffer,
-	byteOffset?: number
-): Uint8Array {
+export type Encode = {
+	(i: bigint, buffer?: ArrayBuffer, byteOffset?: number): Uint8Array
+}
+
+export const encode: Encode = (i: bigint, buffer?: ArrayBuffer, byteOffset = 0): Uint8Array => {
 	if (i < 0n) {
 		throw new RangeError("value must be unsigned")
 	}
 
 	const byteLength = encodingLength(i)
-	buffer = buffer || new ArrayBuffer(byteLength)
-	byteOffset = byteOffset || 0
+	buffer = buffer ?? new ArrayBuffer(byteLength)
 	if (buffer.byteLength < byteOffset + byteLength) {
-		throw new RangeError(
-			"the buffer is too small to encode the number at the offset"
-		)
+		throw new RangeError("the buffer is too small to encode the number at the given offset")
 	}
 
 	const array = new Uint8Array(buffer, byteOffset)
@@ -41,7 +38,12 @@ export function encode(
 	return array
 }
 
-export function decode(data: Uint8Array, offset = 0): bigint {
+export type Decode = {
+	bytes?: number
+	(data: Uint8Array, offset?: number): bigint
+}
+
+export const decode: Decode = (data: Uint8Array, offset = 0): bigint => {
 	let i = 0n
 	let n = 0
 	let b: number
@@ -54,5 +56,7 @@ export function decode(data: Uint8Array, offset = 0): bigint {
 		i += BigInt(b & 0x7f) << BigInt(n * 7)
 		n++
 	} while (0x80 <= b)
+
+	decode.bytes = n
 	return i
 }

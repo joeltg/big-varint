@@ -26,31 +26,35 @@ npm i big-varint
 ### Encode a Signed Varint
 
 ```ts
-import { signed } from "big-varint"
+import { encode } from "big-varint/signed"
 
 const i = -300n
 
-signed.encode(i) // Uint8Array(2) [ 215, 4 ]
+encode(i) // Uint8Array(2) [ 215, 4 ]
 ```
 
 ### Decode a Signed Varint
 
 ```ts
-import { signed } from "big-varint"
+import { decode } from "big-varint/signed"
 
 const data = new Uint8Array([215, 4])
 
-signed.decode(data) // -300n
+decode(data) // -300n
 ```
 
 `decode` can also be passed an optional `offset` parameter:
 
 ```ts
-import { signed } from "big-varint"
+import { decode } from "big-varint/signed"
 
 const data = new Uint8Array([0, 0, 215, 4, 37, 37, 37])
 
-signed.decode(data, 2) // -300n
+decode(data, 2) // -300n
+
+// The encoding length of the most recently decoded value
+// can be accessed via the `decode.bytes` property.
+decode.bytes // 2
 ```
 
 ### Get the Encoding Length of a Signed Varint
@@ -97,9 +101,15 @@ unsigned.decode(data) // 123456789012345678901234567890n
 ```typescript
 import { unsigned } from "big-varint"
 
-const data = new Uint8Array([0, 0, 0, 0, 210, 149, 252, 241, 228, 157, 248, 185, 195, 237, 191, 200, 238, 49, 37, 37])
+const data = new Uint8Array([
+	0, 0, 0, 0, 210, 149, 252, 241, 228, 157, 248, 185, 195, 237, 191, 200, 238, 49, 37, 37, 0, 0,
+])
 
 unsigned.decode(data, 4) // 123456789012345678901234567890n
+
+// The encoding length of the most recently decoded value
+// can be accessed via the `decode.bytes` property.
+decode.bytes // 14
 ```
 
 ### Get the Encoding Length of an Unsigned Varint

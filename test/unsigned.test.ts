@@ -42,8 +42,25 @@ test("uint128", (t) => t.is(Buffer.from(unsigned.encode(uint128)).toString("hex"
 for (let l = 1; l < 15; l++) {
 	const min = 1n << BigInt(7 * l)
 	const max = min - 1n
-	test(`byte ${l} max`, (t) => t.is(unsigned.decode(unsigned.encode(max)), max))
+	test(`byte ${l} max`, (t) => {
+		t.is(unsigned.decode(unsigned.encode(max)), max)
+		t.is(unsigned.decode.bytes, unsigned.encodingLength(max))
+	})
+
 	test(`byte ${l} max length`, (t) => t.is(unsigned.encodingLength(max), l))
 	test(`byte ${l + 1} min length`, (t) => t.is(unsigned.encodingLength(min), l + 1))
-	test(`byte ${l + 1} min`, (t) => t.is(unsigned.decode(unsigned.encode(min)), min))
+	test(`byte ${l + 1} min`, (t) => {
+		t.is(unsigned.decode(unsigned.encode(min)), min)
+		t.is(unsigned.decode.bytes, unsigned.encodingLength(min))
+	})
 }
+
+test("unsigned.decode.bytes", (t) => {
+	const data = new Uint8Array([
+		0, 0, 0, 0, 210, 149, 252, 241, 228, 157, 248, 185, 195, 237, 191, 200, 238, 49, 37, 37, 0, 0,
+	])
+
+	t.is(unsigned.decode(data, 4), 123456789012345678901234567890n)
+	t.is(unsigned.encodingLength(123456789012345678901234567890n), 14)
+	t.is(unsigned.decode.bytes, 14)
+})

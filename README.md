@@ -1,6 +1,6 @@
 # big-varint
 
-[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg)](https://github.com/RichardLitt/standard-readme) [![license](https://img.shields.io/github/license/joeltg/big-varint)](https://opensource.org/licenses/MIT) [![NPM version](https://img.shields.io/npm/v/big-varint)](https://www.npmjs.com/package/big-varint) ![TypeScript types](https://img.shields.io/npm/types/big-varint) ![lines of code](https://img.shields.io/tokei/lines/github/joeltg/big-varint)
+[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg)](https://github.com/RichardLitt/standard-readme) [![license](https://img.shields.io/github/license/joeltg/big-varint)](https://opensource.org/licenses/MIT) [![NPM version](https://img.shields.io/npm/v/big-varint)](https://www.npmjs.com/package/big-varint) ![TypeScript types](https://img.shields.io/npm/types/big-varint)
 
 Encode and decode arbitrarily large signed and unsigned BigInts.
 
@@ -21,19 +21,11 @@ This library is TypeScript-native, ESM-only, and has zero dependencies. It uses 
 npm i big-varint
 ```
 
-Or in Deno:
-
-```typescript
-import { signed, unsigned } from "https://cdn.skypack.dev/big-varint"
-
-signed.encode(-2138912031n)
-```
-
 ## Usage
 
 ### Encode a Signed Varint
 
-```typescript
+```ts
 import { signed } from "big-varint"
 
 const i = -300n
@@ -43,7 +35,7 @@ signed.encode(i) // Uint8Array(2) [ 215, 4 ]
 
 ### Decode a Signed Varint
 
-```typescript
+```ts
 import { signed } from "big-varint"
 
 const data = new Uint8Array([215, 4])
@@ -53,7 +45,7 @@ signed.decode(data) // -300n
 
 `decode` can also be passed an optional `offset` parameter:
 
-```typescript
+```ts
 import { signed } from "big-varint"
 
 const data = new Uint8Array([0, 0, 215, 4, 37, 37, 37])
@@ -63,7 +55,7 @@ signed.decode(data, 2) // -300n
 
 ### Get the Encoding Length of a Signed Varint
 
-```typescript
+```ts
 import { signed } from "big-varint"
 
 const i = -300n
@@ -73,7 +65,7 @@ signed.encodingLength(i) // 2
 
 ### Encode an Unsigned Varint
 
-```typescript
+```ts
 import { unsigned } from "big-varint"
 
 const i = 123456789012345678901234567890n
@@ -92,12 +84,10 @@ Uint8Array(14) [
 
 ### Decode an Unsigned Varint
 
-```typescript
+```ts
 import { unsigned } from "big-varint"
 
-const data = new Uint8Array([
-	210, 149, 252, 241, 228, 157, 248, 185, 195, 237, 191, 200, 238, 49,
-])
+const data = new Uint8Array([210, 149, 252, 241, 228, 157, 248, 185, 195, 237, 191, 200, 238, 49])
 
 unsigned.decode(data) // 123456789012345678901234567890n
 ```
@@ -107,10 +97,7 @@ unsigned.decode(data) // 123456789012345678901234567890n
 ```typescript
 import { unsigned } from "big-varint"
 
-const data = new Uint8Array([
-	0, 0, 0, 0, 210, 149, 252, 241, 228, 157, 248, 185, 195, 237, 191, 200, 238,
-	49, 37, 37,
-])
+const data = new Uint8Array([0, 0, 0, 0, 210, 149, 252, 241, 228, 157, 248, 185, 195, 237, 191, 200, 238, 49, 37, 37])
 
 unsigned.decode(data, 4) // 123456789012345678901234567890n
 ```

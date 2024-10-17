@@ -25,7 +25,7 @@ export const encode: Encode = (i: bigint, buffer?: ArrayBuffer, byteOffset = 0):
 		throw new RangeError("the buffer is too small to encode the number at the given offset")
 	}
 
-	const array = new Uint8Array(buffer, byteOffset)
+	const array = new Uint8Array(buffer, byteOffset, byteLength)
 
 	let offset = 0
 	while (LIMIT < i) {
